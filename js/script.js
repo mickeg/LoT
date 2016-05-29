@@ -6,7 +6,7 @@ var vG_url = "http://localhost:8081/testdata";
 
 $( document ).ready(function() {
     
-    $("#test").click(function(){
+    $("#button").click(function(){
        $.support.cors = true;
        $.ajax({
         url: vG_url,
@@ -16,8 +16,8 @@ $( document ).ready(function() {
         success: function(data) {
             //console.log("success"+data);
             //showData(data)
-            $("#status").append("Data loaded.");
-            vg_data = data;
+            $("#status").html("Data loaded.");
+            vG_data = data;
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert(url);
@@ -28,7 +28,7 @@ $( document ).ready(function() {
 
     function showData(d){
         if(d == ""){
-            $("#output").html("Data is not loaded.");
+            $("#status").html("Data is not loaded.");
         }
         $.each(d, function(index,item) {   
 
@@ -38,6 +38,7 @@ $( document ).ready(function() {
                 item["Vetenskapligt namn"]+"</I>)" +" - " + 
                 //item["Svensk förekomst"] +" - " + 
                 item["Organismgrupp"] + " - " + 
+               "Rödlistekriterium: "+ item["Rödlistekriterium"] +
 
                 "</br>");
         });
@@ -46,6 +47,7 @@ $( document ).ready(function() {
     function hello(d){
         console.log("test "+d);
     }
-
-    showData(vG_data)
+    $("#print").click(function(){
+        showData(vG_data)
+    });
 });

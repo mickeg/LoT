@@ -7,3 +7,11 @@ html {
 #output{
     margin: 10px;
 }
+
+#button{
+    cursor: pointer;
+}
+
+#print{
+    cursor: pointer;
+}
