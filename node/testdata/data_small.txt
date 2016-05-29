@@ -1,0 +1,18 @@
+{
+	"TaxonId":216215,
+	"Vetenskapligt namn":"Lasionycta dovrensis",
+	"Svenskt namn":"gråsvart fjällfly","Svensk förekomst":"Bofast och reproducerande",
+	"Typ":"Art",
+	"Organismgrupp":"Fjärilar",
+	"Kategori":"Livskraftig (LC)",
+	"Rödlistekriterium":"",
+	"Skog (S)":"Viktig",
+	"Jordbrukslandskap (J)":"",
+	"Urban miljö (U)":"",
+	"Fjäll (F)":"Viktig",
+	"Våtmark (V)":"",
+	"Sötvatten (L)":null,
+	"Havsstrand (H)":null,
+	"Marin miljö (M)":null,
+	"Brackvatten (B)":"null"
+}	
