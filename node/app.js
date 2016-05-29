@@ -1,5 +1,7 @@
 //Use nodemon app.js to track changes..
 
+//json-server data.json <-- to start API
+
 var express = require('express')
   , app = express()
   , bodyParser = require('body-parser')

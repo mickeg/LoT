@@ -20,4 +20,28 @@ html {
     position: absolute;
      background: #F90;
      padding: 7px 3px;
+     height: 300px;
+     width:180px;
+     font-size: 20px;
+     float: left;
+ }
+ 
+ #Fjärilar{
+     background-color: seagreen;
+ }
+ 
+  #Skalbaggar{
+     background-color: aquamarine;
+ }
+ 
+  #Blötdjur{
+     background-color: blueviolet;
+ }
+ 
+  #Fiskar{
+     background-color: saddlebrown;
+ }
+ 
+  #Kärlväxter{
+     background-color: hotpink;
  }
