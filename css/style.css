@@ -15,3 +15,9 @@ html {
 #print{
     cursor: pointer;
 }
+
+.card{
+    position: absolute;
+     background: #F90;
+     padding: 7px 3px;
+ }
