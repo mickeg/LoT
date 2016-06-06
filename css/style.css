@@ -16,6 +16,10 @@ html {
     cursor: pointer;
 }
 
+.cursor_pointer{
+    cursor: pointer;
+}
+
 .card{
     position: absolute;
      background: #F90;
