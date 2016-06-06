@@ -66,6 +66,8 @@ $( document ).ready(function() {
             }).appendTo( 'body' ).fadeIn(1000);
 
         });
+        
+        search = JSON.search(player1deck[0].SvensktNamn);
     }
     
     function createCard(namn, art){
