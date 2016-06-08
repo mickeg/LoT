@@ -20,32 +20,43 @@ html {
     cursor: pointer;
 }
 
-.card{
-    position: absolute;
-     background: #F90;
-     padding: 7px 3px;
-     height: 300px;
-     width:180px;
-     font-size: 20px;
-     float: left;
- }
- 
- #Fjärilar{
-     background-color: seagreen;
- }
- 
-  #Skalbaggar{
-     background-color: aquamarine;
- }
- 
-  #Blötdjur{
-     background-color: blueviolet;
- }
- 
-  #Fiskar{
-     background-color: saddlebrown;
- }
- 
-  #Kärlväxter{
-     background-color: hotpink;
- }
+.card {
+    width:150px;
+    height:200px;
+    background:#FFF;
+    float:left;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    margin: 5px;
+}
+
+.header{
+    font-family: "Verdana";
+    font-size: 16px;
+    color: #000;
+}
+
+.cardname{
+    font-family: "Verdana";
+    font-size: 12px;
+    color: #000;
+}
+
+#Fjärilar{
+    background-color: seagreen;
+}
+
+#Skalbaggar{
+    background-color: aquamarine;
+}
+
+#Blötdjur{
+    background-color: blueviolet;
+}
+
+#Fiskar{
+    background-color: saddlebrown;
+}
+
+#Kärlväxter{
+    background-color: hotpink;
+}

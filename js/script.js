@@ -28,7 +28,7 @@ $( document ).ready(function() {
         vG_data.Organismgrupp = d.Organismgrupp;
         vG_data["Svensk förekomst"] = d["Svensk förekomst"];
 
-        vG_dataArray.push({"Card":[{"SvensktNamn":d.SvensktNamn}, {"Organismgrupp": d.Organismgrupp}]});
+        vG_dataArray.push({"Card":[{"SvensktNamn":d.SvensktNamn}, {"Organismgrupp": d.Organismgrupp}, {"SvenskFörekomst": d["Svensk förekomst"]}]});
         console.log(vG_data);
     }
 
@@ -49,30 +49,45 @@ $( document ).ready(function() {
     function generateCards(){
         player1deck = vG_dataArray.slice(5);
         player2deck = vG_dataArray.slice(-5);
-        //console.log(player1deck[2])
-        
+        console.log("player1 deck: ",player1deck);
+        createHierarchy(player1deck);
+
         $.each(player1deck, function(index, value) {
             
             $div = $('<div />', {
                 class:'card',
-                id:value.Card[1].Organismgrupp,
-                'text': value.Card[1].Organismgrupp.toUpperCase() + '  ' + value.Card[0].SvensktNamn 
+                id:value.Card[1].Organismgrupp
             });
-            $div.css({
-                'position':'absolute',
-                'left':index * 200+'px',
-                'top':100+'px',
-                'display':'none'
-            }).appendTo( 'body' ).fadeIn(1000);
+
+            $div.append("<div class='header'>"+value.Card[1].Organismgrupp.toUpperCase()+ "</div>");
+            $div.append("<div class='cardname'>"+value.Card[0].SvensktNamn+ "</div>");
+            $div.append("<div class='cardname'>"+value.Card[2].SvenskFörekomst+ "</div>");
+
+            $div.appendTo( 'body' ).fadeIn(1000);
 
         });
         
-        search = JSON.search(player1deck[0].SvensktNamn);
     }
     
     function createCard(namn, art){
         var card="<div class='card'><p>"+namn+"<br/>"+art+"</p></div>";
          $(card).appendTo("body");
+    }
+
+    function createHierarchy(d){
+        //Fjärilar:
+        h = {};
+
+        h.Fjärilar = d.filter(function (data) {
+            return data.Card[1].Organismgrupp == "Fjärilar";
+        });
+
+        
+
+        console.log(h);
+
+        //console.log(h.Fjärilar[0].Card[0].SvensktNamn);
+        
     }
 
 
