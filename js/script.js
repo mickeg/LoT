@@ -28,7 +28,7 @@ $( document ).ready(function() {
         vG_data.Organismgrupp = d.Organismgrupp;
         vG_data["Svensk förekomst"] = d["Svensk förekomst"];
 
-        vG_dataArray.push({"Card":[{"SvensktNamn":d.SvensktNamn}, {"Organismgrupp": d.Organismgrupp}, {"SvenskFörekomst": d["Svensk förekomst"]}]});
+        vG_dataArray.push({"Card":{"SvensktNamn":d.SvensktNamn, "Organismgrupp": d.Organismgrupp, "SvenskFörekomst": d["Svensk förekomst"]}});
         console.log(vG_data);
     }
 
@@ -45,35 +45,49 @@ $( document ).ready(function() {
             }
         });
     }
-    
+
     function generateCards(){
-        player1deck = vG_dataArray.slice(5);
-        player2deck = vG_dataArray.slice(-5);
+        player1deck = vG_dataArray.slice(0,5);
+        player2deck = vG_dataArray.slice(5,10);
+        console.log(vG_dataArray);
         console.log("player1 deck: ",player1deck);
-        createHierarchy(player1deck);
+        console.log("player2 deck: ",player2deck);
+        //createHierarchy(player1deck);
 
         $.each(player1deck, function(index, value) {
             
             $div = $('<div />', {
                 class:'card',
-                id:value.Card[1].Organismgrupp
+                id:value.Card.Organismgrupp
             });
 
-            $div.append("<div class='header'>"+value.Card[1].Organismgrupp.toUpperCase()+ "</div>");
-            $div.append("<div class='cardname'>"+value.Card[0].SvensktNamn+ "</div>");
-            $div.append("<div class='cardname'>"+value.Card[2].SvenskFörekomst+ "</div>");
+            $div.append("<div class='header'>"+value.Card.Organismgrupp.toUpperCase()+ "</div>");
+            $div.append("<div class='cardname'>"+value.Card.SvensktNamn+ "</div>");
+            $div.append("<div class='cardname'>"+value.Card.SvenskFörekomst+ "</div>");
 
-            $div.appendTo( 'body' ).fadeIn(1000);
+            $div.appendTo( '#player1' ).fadeIn(1000);
+
+        });
+
+        $.each(player2deck, function(index, value) {
+            
+            $div = $('<div />', {
+                class:'card',
+                id:value.Card.Organismgrupp
+            });
+
+            $div.append("<div class='header'>"+value.Card.Organismgrupp.toUpperCase()+ "</div>");
+            $div.append("<div class='cardname'>"+value.Card.SvensktNamn+ "</div>");
+            $div.append("<div class='cardname'>"+value.Card.SvenskFörekomst+ "</div>");
+
+            $div.appendTo( '#player2' ).fadeIn(1000);
 
         });
         
-    }
-    
-    function createCard(namn, art){
-        var card="<div class='card'><p>"+namn+"<br/>"+art+"</p></div>";
-         $(card).appendTo("body");
+        
     }
 
+/*
     function createHierarchy(d){
         //Fjärilar:
         h = {};
@@ -89,6 +103,7 @@ $( document ).ready(function() {
         //console.log(h.Fjärilar[0].Card[0].SvensktNamn);
         
     }
+    */
 
 
 });
