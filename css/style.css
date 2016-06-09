@@ -4,9 +4,28 @@ html {
     margin: 10px;
 }
 
+#container{
+    width: 850px;
+}
+
+.node1{
+    float:left;
+    color: red;
+    margin:5px;
+}
+
+.node2{
+    margin:5px;
+}
+
 .output{
     margin: 10px;
 }
+
+.h_output{
+    float:left;
+}
+
 #player1{
     margin: 10px;
     float:left;

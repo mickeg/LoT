@@ -49,10 +49,10 @@ $( document ).ready(function() {
     function generateCards(){
         player1deck = vG_dataArray.slice(0,5);
         player2deck = vG_dataArray.slice(5,10);
-        console.log(vG_dataArray);
+        console.log("Deck",vG_dataArray);
         console.log("player1 deck: ",player1deck);
         console.log("player2 deck: ",player2deck);
-        //createHierarchy(player1deck);
+        createHierarchy(vG_dataArray);
 
         $.each(player1deck, function(index, value) {
             
@@ -81,29 +81,62 @@ $( document ).ready(function() {
             $div.append("<div class='cardname'>"+value.Card.SvenskFörekomst+ "</div>");
 
             $div.appendTo( '#player2' ).fadeIn(1000);
-
         });
-        
-        
     }
 
-/*
+
     function createHierarchy(d){
         //Fjärilar:
         h = {};
 
         h.Fjärilar = d.filter(function (data) {
-            return data.Card[1].Organismgrupp == "Fjärilar";
+            return data.Card.Organismgrupp == "Fjärilar";
         });
 
-        
+        //Kärlväxter:
+        h.Kärlväxter = d.filter(function (data) {
+            return data.Card.Organismgrupp == "Kärlväxter";
+        });
+
+        //Storsvampar:
+        h.Storsvampar = d.filter(function (data) {
+            return data.Card.Organismgrupp == "Storsvampar";
+        });
+
+        //Alger:
+        h.Alger = d.filter(function (data) {
+            return data.Card.Organismgrupp == "Alger";
+        });
 
         console.log(h);
 
-        //console.log(h.Fjärilar[0].Card[0].SvensktNamn);
-        
-    }
-    */
+        $.each(h, function(index, value){
+            //Skapa upp huvudnoder
+            console.log(index, value);
+            var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ')';
+            $div = $('<div />', {
+                class:'node1',
+                css:({"background-color":hue}),
+                id:index
+            });
 
+            $div.append(index);
+            $div.appendTo( '.h_output' ).fadeIn(1000);
+
+            $.each(value, function(index, v){
+                //Skapa upp children
+                //console.log(v.Card.SvensktNamn);
+                $div2 = $('<div />', {
+                    class:'node2',
+                    css:({"background-color":"#fff"}),
+                    visibility: 'hidden',
+                    id:index
+                });
+                $div2.append(v.Card.SvensktNamn);  
+                $div2.appendTo( '#'+v.Card.Organismgrupp ).fadeIn(1000);
+            });
+        });
+
+    }
 
 });
