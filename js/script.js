@@ -9,16 +9,14 @@ var size = 10;
 $( document ).ready(function() {
     
     $("#print").click(function(){
+        $('div.loadingbar').show();
         for(i=0; i < size; i++){
-            r = getRandomInt(1, 19587); //max number in json.
+            r = getRandomInt(1, 19587); //max number in data file.
             ajaxLoad(r, callback);
         }
+        $("#print").hide();
     });
-    
-     $("#cards").click(function(){
-        generateCards();
-    });
-    
+
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
@@ -26,17 +24,20 @@ $( document ).ready(function() {
     var callback = function(n, d){
         loadingbar = $('div.loadingbar').width();
         console.log($('div.loadingbar').width());
-        $('div.loadingbar').width((loadingbar / 10) * 100)
-        $('div.loadingbar').html(loadingbar + 10);
+        $('div.loadingbar').width(loadingbar + (1 / size) * 100)
+        $('div.loadingbar').html(loadingbar + (1 / size) * 100 + '%');
         vG_data.ID = n;
         vG_data.SvensktNamn = d.SvensktNamn;
         vG_data.Organismgrupp = d.Organismgrupp;
-        vG_data["Svensk förekomst"] = d["Svensk förekomst"];
+        vG_data["Svensk före    komst"] = d["Svensk förekomst"];
 
         vG_dataArray.push({"Card":{"SvensktNamn":d.SvensktNamn, "Organismgrupp": d.Organismgrupp, "SvenskFörekomst": d["Svensk förekomst"]}});
         console.log(vG_data);
-        //console.log($('div.loadingbar').width());
-        //$('div.loadingbar').width('(1/10)');
+        console.log(loadingbar);
+        if(loadingbar + size == 100){
+            $('div.loadingbar').html('Done!').fadeOut();
+            generateCards();
+        }
     }
 
     function ajaxLoad(n, c){
