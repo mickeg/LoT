@@ -77,22 +77,22 @@ html {
     color: #000;
 }
 
-#Fjärilar{
+.Fjärilar{
     background-color: seagreen;
 }
 
-#Skalbaggar{
+.Skalbaggar{
     background-color: aquamarine;
 }
 
-#Blötdjur{
+.Blötdjur{
     background-color: blueviolet;
 }
 
-#Fiskar{
+.Fiskar{
     background-color: saddlebrown;
 }
 
-#Kärlväxter{
+.Kärlväxter{
     background-color: hotpink;
 }

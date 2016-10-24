@@ -64,7 +64,7 @@ $( document ).ready(function() {
 
         $.each(player1deck, function(index, value) {
             $div = $('<div />', {
-                class:'card',
+                class:'card ' +value.Card.Organismgrupp,
                 id:value.Card.ID
             });
 
