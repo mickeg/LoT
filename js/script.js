@@ -29,9 +29,9 @@ $( document ).ready(function() {
         vG_data.ID = n;
         vG_data.SvensktNamn = d.SvensktNamn;
         vG_data.Organismgrupp = d.Organismgrupp;
-        vG_data["Svensk före    komst"] = d["Svensk förekomst"];
+        vG_data["Svensk förekomst"] = d["Svensk förekomst"];
 
-        vG_dataArray.push({"Card":{"SvensktNamn":d.SvensktNamn, "Organismgrupp": d.Organismgrupp, "SvenskFörekomst": d["Svensk förekomst"]}});
+        vG_dataArray.push({"Card":{ID:n, "SvensktNamn":d.SvensktNamn, "Organismgrupp": d.Organismgrupp, "SvenskFörekomst": d["Svensk förekomst"]}});
         console.log(vG_data);
         console.log(loadingbar);
         if(loadingbar + size == 100){
@@ -63,7 +63,6 @@ $( document ).ready(function() {
         createHierarchy(vG_dataArray);
 
         $.each(player1deck, function(index, value) {
-            
             $div = $('<div />', {
                 class:'card',
                 id:value.Card.ID
@@ -78,10 +77,9 @@ $( document ).ready(function() {
         });
 
         $.each(player2deck, function(index, value) {
-            
             $div = $('<div />', {
                 class:'card',
-                id:value.Card.Organismgrupp
+                id:value.Card.ID
             });
 
             $div.append("<div class='header'>"+value.Card.Organismgrupp.toUpperCase()+ "</div>");
@@ -90,9 +88,13 @@ $( document ).ready(function() {
 
             $div.appendTo( '#player2' ).fadeIn(1000);
         });
+
+        $('.card').click(function(){    
+            console.log('clicked on '+$(this).class);
+            console.log($(this))
+        });
+
     }
-
-
     function createHierarchy(d){
         //Fjärilar:
         h = {};
