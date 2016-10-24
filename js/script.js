@@ -23,13 +23,20 @@ $( document ).ready(function() {
         return Math.floor(Math.random() * (max - min)) + min;
     }
     
-    var callback = function(d){
+    var callback = function(n, d){
+        loadingbar = $('div.loadingbar').width();
+        console.log($('div.loadingbar').width());
+        $('div.loadingbar').width((loadingbar / 10) * 100)
+        $('div.loadingbar').html(loadingbar + 10);
+        vG_data.ID = n;
         vG_data.SvensktNamn = d.SvensktNamn;
         vG_data.Organismgrupp = d.Organismgrupp;
         vG_data["Svensk förekomst"] = d["Svensk förekomst"];
 
         vG_dataArray.push({"Card":{"SvensktNamn":d.SvensktNamn, "Organismgrupp": d.Organismgrupp, "SvenskFörekomst": d["Svensk förekomst"]}});
         console.log(vG_data);
+        //console.log($('div.loadingbar').width());
+        //$('div.loadingbar').width('(1/10)');
     }
 
     function ajaxLoad(n, c){
@@ -38,7 +45,7 @@ $( document ).ready(function() {
             url: vG_url+n,
             dataType: "json",
             success: function(data) {
-                callback(data)
+                callback(n, data)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('error ' + textStatus + " " + errorThrown);
@@ -58,7 +65,7 @@ $( document ).ready(function() {
             
             $div = $('<div />', {
                 class:'card',
-                id:value.Card.Organismgrupp
+                id:value.Card.ID
             });
 
             $div.append("<div class='header'>"+value.Card.Organismgrupp.toUpperCase()+ "</div>");

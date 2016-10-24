@@ -8,6 +8,11 @@ html {
     width: 850px;
 }
 
+.loadingbar{
+    background-color: red;
+    width:1%;
+}
+
 .node1{
     float:left;
     color: red;
