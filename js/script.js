@@ -7,25 +7,26 @@ var vG_jsonSize = 0;
 var size = 10;
 
 $( document ).ready(function() {
-    
-    $("#print").click(function(){
+    init();
+
+    function init(){
         $('div.loadingbar').show();
         for(i=0; i < size; i++){
             r = getRandomInt(1, 19587); //max number in data file.
             ajaxLoad(r, callback);
         }
-        $("#print").hide();
-    });
-
+    }
+    
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
     
     var callback = function(n, d){
-        loadingbar = $('div.loadingbar').width();
-        console.log($('div.loadingbar').width());
-        $('div.loadingbar').width(loadingbar + (1 / size) * 100)
-        $('div.loadingbar').html(loadingbar + (1 / size) * 100 + '%');
+        loadingbar = parseInt($('div.loadingbar').width());
+        loadingbar = loadingbar + ((1/size) * 100);
+        
+        $('div.loadingbar').width(loadingbar);
+        $('div.loadingbar').html(loadingbar + (1 / size) * 100);
         vG_data.ID = n;
         vG_data.SvensktNamn = d.SvensktNamn;
         vG_data.Organismgrupp = d.Organismgrupp;
@@ -33,7 +34,7 @@ $( document ).ready(function() {
 
         vG_dataArray.push({"Card":{ID:n, "SvensktNamn":d.SvensktNamn, "Organismgrupp": d.Organismgrupp, "SvenskFörekomst": d["Svensk förekomst"]}});
         console.log(vG_data);
-        console.log(loadingbar);
+        console.log('Loadingbar i slutet: ', loadingbar);
         if(loadingbar + size == 100){
             $('div.loadingbar').html('Done!').fadeOut();
             generateCards();
@@ -68,6 +69,7 @@ $( document ).ready(function() {
                 id:value.Card.ID
             });
 
+            $div.append("<div class='header'>"+value.Card.ID+ "</div>");
             $div.append("<div class='header'>"+value.Card.Organismgrupp.toUpperCase()+ "</div>");
             $div.append("<div class='cardname'>"+value.Card.SvensktNamn+ "</div>");
             $div.append("<div class='cardname'>"+value.Card.SvenskFörekomst+ "</div>");
@@ -82,6 +84,7 @@ $( document ).ready(function() {
                 id:value.Card.ID
             });
 
+            $div.append("<div class='header'>"+value.Card.ID+ "</div>");
             $div.append("<div class='header'>"+value.Card.Organismgrupp.toUpperCase()+ "</div>");
             $div.append("<div class='cardname'>"+value.Card.SvensktNamn+ "</div>");
             $div.append("<div class='cardname'>"+value.Card.SvenskFörekomst+ "</div>");

@@ -4,10 +4,13 @@ html {
     background: linear-gradient(to left, #4CA1AF , #C4E0E5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
- 
-
 #container{
     width: 850px;
+}
+
+#loadingbar_container{
+    width:100%;
+    background-color: yellow;
 }
 
 .loadingbar{
